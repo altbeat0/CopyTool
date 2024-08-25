@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy to Clipboard Example</title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .text-field {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        input[type="file"] {
+            flex: 1;
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Copy Text to Clipboard</h2>
+
+        <!-- Text fields without prefilled text -->
+        <div class="text-field">
+            <input type="text" id="field1" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field1')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field2" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field2')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field3" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field3')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field4" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field4')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field5" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field5')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field6" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field6')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field7" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field7')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field8" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field8')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field9" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field9')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="text" id="field10" placeholder="Enter text here...">
+            <button onclick="copyToClipboard('field10')">Copy</button>
+        </div>
+
+        <!-- File upload fields -->
+        <div class="text-field">
+            <input type="file" id="fileUpload1" accept=".txt, .doc, .docx, .pdf">
+            <button oncontextmenu="copyFileToClipboard('fileUpload1')">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <input type="file" id="fileUpload2" accept=".txt, .doc, .docx, .pdf">
+            <button oncontextmenu="copyFileToClipboard('fileUpload2')">Copy</button>
+        </div>
+
+    </div>
+
+    <script>
+        function copyToClipboard(fieldId) {
+            const textField = document.getElementById(fieldId);
+            textField.select();
+            document.execCommand("copy");
+        }
+
+        function copyFileToClipboard(fileInputId) {
+            const fileInput = document.getElementById(fileInputId);
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const content = event.target.result;
+                    navigator.clipboard.writeText(content);
+                };
+                reader.readAsText(file);
+            } else {
+                alert('No file selected.');
+            }
+        }
+    </script>
+
+</body>
+</html>
