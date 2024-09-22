@@ -11,22 +11,19 @@
             color: #ffffff;
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            padding: 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
+            margin: 0 auto;
             padding: 20px;
             background-color: #1e1e1e;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-            margin-bottom: 20px;
         }
 
         h2 {
@@ -38,11 +35,24 @@
 
         .text-field {
             display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
 
+        .input-group {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
         input[type="text"] {
-            flex: 1;
+            width: 100%;
             padding: 10px;
             font-size: 16px;
             border: 2px solid #444;
@@ -51,6 +61,7 @@
             color: #ffffff;
             outline: none;
             transition: border-color 0.3s;
+            box-sizing: border-box;
         }
 
         input[type="text"]:focus {
@@ -61,13 +72,19 @@
             padding: 10px 15px;
             font-size: 16px;
             cursor: pointer;
-            margin-left: 10px;
             border: none;
             border-radius: 8px;
             background-color: #444;
             color: #ffffff;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .copy-btn {
+            margin-left: 10px;
+            padding: 8px 12px;
+            font-size: 14px;
+            min-width: 70px;
         }
 
         button:hover {
@@ -78,10 +95,36 @@
             background-color: #333;
         }
 
+        .copied {
+            background-color: #4CAF50;
+        }
+
         .footer {
             text-align: center;
             color: #777;
             font-size: 14px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .text-field {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .copy-btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -90,58 +133,129 @@
     <div class="container">
         <h2>Copy Text to Clipboard</h2>
 
+        <!-- P1 Fields -->
         <div class="text-field">
-            <input type="text" id="field1" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field1')">Copy</button>
+            <div class="input-group">
+                <label for="field1">Name of P1</label>
+                <input type="text" id="field1" placeholder="Enter name here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field1', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field2" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field2')">Copy</button>
+            <div class="input-group">
+                <label for="field2">Roll No of P1</label>
+                <input type="text" id="field2" placeholder="Enter roll no here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field2', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field3" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field3')">Copy</button>
+            <div class="input-group">
+                <label for="field3">Batch of P1</label>
+                <input type="text" id="field3" placeholder="Enter batch here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field3', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field4" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field4')">Copy</button>
+            <div class="input-group">
+                <label for="field4">Phone of P1</label>
+                <input type="text" id="field4" placeholder="Enter phone no here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field4', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field5" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field5')">Copy</button>
+            <div class="input-group">
+                <label for="field5">Email of P1</label>
+                <input type="text" id="field5" placeholder="Enter email here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field5', this)">Copy</button>
+        </div>
+
+        <!-- P2 Fields -->
+        <div class="text-field">
+            <div class="input-group">
+                <label for="field6">Name of P2</label>
+                <input type="text" id="field6" placeholder="Enter name here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field6', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field6" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field6')">Copy</button>
+            <div class="input-group">
+                <label for="field7">Roll No of P2</label>
+                <input type="text" id="field7" placeholder="Enter roll no here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field7', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field7" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field7')">Copy</button>
+            <div class="input-group">
+                <label for="field8">Batch of P2</label>
+                <input type="text" id="field8" placeholder="Enter batch here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field8', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field8" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field8')">Copy</button>
+            <div class="input-group">
+                <label for="field9">Phone of P2</label>
+                <input type="text" id="field9" placeholder="Enter phone no here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field9', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field9" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field9')">Copy</button>
+            <div class="input-group">
+                <label for="field10">Email of P2</label>
+                <input type="text" id="field10" placeholder="Enter email here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field10', this)">Copy</button>
+        </div>
+
+        <!-- P3 Fields -->
+        <div class="text-field">
+            <div class="input-group">
+                <label for="field11">Name of P3</label>
+                <input type="text" id="field11" placeholder="Enter name here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field11', this)">Copy</button>
         </div>
 
         <div class="text-field">
-            <input type="text" id="field10" placeholder="Enter text here...">
-            <button onclick="copyToClipboard('field10')">Copy</button>
+            <div class="input-group">
+                <label for="field12">Roll No of P3</label>
+                <input type="text" id="field12" placeholder="Enter roll no here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field12', this)">Copy</button>
         </div>
 
+        <div class="text-field">
+            <div class="input-group">
+                <label for="field13">Batch of P3</label>
+                <input type="text" id="field13" placeholder="Enter batch here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field13', this)">Copy</button>
         </div>
-        
+
+        <div class="text-field">
+            <div class="input-group">
+                <label for="field14">Phone of P3</label>
+                <input type="text" id="field14" placeholder="Enter phone no here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field14', this)">Copy</button>
+        </div>
+
+        <div class="text-field">
+            <div class="input-group">
+                <label for="field15">Email of P3</label>
+                <input type="text" id="field15" placeholder="Enter email here...">
+            </div>
+            <button class="copy-btn" onclick="copyToClipboard('field15', this)">Copy</button>
+        </div>
+
     </div>
 
     <div class="footer">
@@ -149,10 +263,16 @@
     </div>
 
     <script>
-        function copyToClipboard(fieldId) {
-            const textField = document.getElementById(fieldId);
-            textField.select();
-            document.execCommand("copy");
+        function copyToClipboard(fieldId, button) {
+            const text = document.getElementById(fieldId).value;
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = "Copied!";
+                button.classList.add("copied");
+                setTimeout(() => {
+                    button.textContent = "Copy";
+                    button.classList.remove("copied");
+                }, 2000);
+            });
         }
     </script>
 
